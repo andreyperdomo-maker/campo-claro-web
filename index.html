@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arrocera Campo Claro | Arroz del surco a tu mesa</title>
+  <meta name="description" content="Cultivamos, secamos y molemos arroz de grano largo. Conoce nuestros productos y escríbenos.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Aplica el tema antes de pintar la página para evitar parpadeo -->
+  <script>
+    try {
+      const guardado = localStorage.getItem('tema');
+      const sistema = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (guardado === 'dark' || (!guardado && sistema)) document.documentElement.classList.add('dark');
+    } catch (e) {}
+  </script>
+
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Fraunces', 'Georgia', 'serif'],
+            sans: ['Figtree', 'system-ui', 'sans-serif']
+          },
+          colors: {
+            // Regla 60-30-10 (los valores reales están en :root y .dark)
+            dominante:  'rgb(var(--c60) / <alpha-value>)', // 60%: fondos
+            secundario: 'rgb(var(--c30) / <alpha-value>)', // 30%: bloques y tarjetas
+            acento:     'rgb(var(--c10) / <alpha-value>)', // 10%: botones y detalles
+            tinta:      'rgb(var(--tinta) / <alpha-value>)',
+            sobre:      'rgb(var(--sobre) / <alpha-value>)'
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      --c60: 244 247 238;   /* grano claro con un toque verde */
+      --c30: 47 93 58;      /* verde de arrozal */
+      --c10: 224 165 38;    /* dorado de cosecha */
+      --tinta: 28 40 30;    /* texto sobre fondo dominante */
+      --sobre: 244 247 238; /* texto sobre bloque secundario */
+    }
+    .dark {
+      --c60: 18 26 20;
+      --c30: 33 52 38;
+      --c10: 240 185 58;
+      --tinta: 232 238 226;
+      --sobre: 232 238 226;
+    }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    :focus-visible { outline: 3px solid rgb(var(--c10)); outline-offset: 2px; }
+  </style>
+</head>
+
+<body class="bg-dominante text-tinta font-sans antialiased transition-colors duration-300">
+
+  <!-- Navegación -->
+  <header class="sticky top-0 z-20 bg-dominante/90 backdrop-blur border-b border-secundario/20">
+    <nav class="max-w-6xl mx-auto flex items-center justify-between px-5 py-3" aria-label="Principal">
+      <a href="#inicio" class="font-display font-bold text-xl">Campo Claro</a>
+      <div class="flex items-center gap-3 sm:gap-6">
+        <ul class="hidden md:flex gap-6 text-sm font-medium">
+          <li><a class="hover:text-acento" href="#productos">Productos</a></li>
+          <li><a class="hover:text-acento" href="#proceso">Proceso</a></li>
+          <li><a class="hover:text-acento" href="#contacto">Contacto</a></li>
+        </ul>
+        <button id="btnTema" type="button" aria-label="Cambiar entre modo claro y oscuro"
+          class="rounded-full border border-secundario/40 px-3 py-1.5 text-sm font-medium hover:bg-secundario hover:text-sobre">
+          <span id="textoTema">Modo oscuro</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="inicio" class="max-w-6xl mx-auto px-5 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h1 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight">
+          Arroz cultivado con paciencia, molido con cuidado.
+        </h1>
+        <p class="mt-5 text-lg max-w-prose">
+          Sembramos, cosechamos y empacamos arroz de grano largo en un solo lugar, para que cada bolsa llegue limpia, suelta y con buen sabor.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#productos" class="rounded-lg bg-acento text-[#1c281e] font-semibold px-6 py-3 hover:brightness-110">Ver productos</a>
+          <a href="#contacto" class="rounded-lg border-2 border-secundario px-6 py-3 font-semibold hover:bg-secundario hover:text-sobre">Pedir cotización</a>
+        </div>
+      </div>
+
+      <!-- Surcos de arroz dibujados con SVG -->
+      <div class="rounded-2xl bg-secundario p-6 text-sobre" role="img" aria-label="Ilustración de surcos de arroz con una espiga dorada">
+        <svg viewBox="0 0 400 300" class="w-full h-auto" aria-hidden="true">
+          <g stroke="currentColor" stroke-width="2" fill="none" opacity=".35">
+            <path d="M0 240 Q100 200 200 220 T400 200"/>
+            <path d="M0 262 Q100 222 200 242 T400 222"/>
+            <path d="M0 284 Q100 244 200 264 T400 244"/>
+          </g>
+          <g stroke="rgb(var(--c10))" stroke-width="3" stroke-linecap="round" fill="rgb(var(--c10))">
+            <path d="M200 230 C196 170 204 110 214 50" fill="none"/>
+            <ellipse cx="204" cy="75" rx="7" ry="16" transform="rotate(14 204 75)"/>
+            <ellipse cx="226" cy="85" rx="7" ry="16" transform="rotate(30 226 85)"/>
+            <ellipse cx="200" cy="105" rx="7" ry="16" transform="rotate(10 200 105)"/>
+            <ellipse cx="224" cy="116" rx="7" ry="16" transform="rotate(28 224 116)"/>
+            <ellipse cx="198" cy="136" rx="7" ry="16" transform="rotate(8 198 136)"/>
+            <ellipse cx="220" cy="148" rx="7" ry="16" transform="rotate(26 220 148)"/>
+            <ellipse cx="196" cy="168" rx="7" ry="16" transform="rotate(6 196 168)"/>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Productos -->
+    <section id="productos" class="bg-secundario text-sobre py-16">
+      <div class="max-w-6xl mx-auto px-5">
+        <h2 class="font-display font-bold text-3xl sm:text-4xl">Tres arroces, tres usos en la cocina</h2>
+        <p class="mt-3 max-w-prose">Todos pasan por selección de grano y control de humedad antes de empacarse.</p>
+
+        <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <article class="rounded-xl bg-dominante text-tinta p-6 border-t-4 border-acento">
+            <h3 class="font-display font-bold text-xl">Blanco extra</h3>
+            <p class="mt-2">Grano largo y entero. Queda suelto en almuerzos diarios y en platos con salsa.</p>
+            <p class="mt-4 text-sm font-semibold">Bolsas de 500 g, 1 kg y 5 kg</p>
+          </article>
+          <article class="rounded-xl bg-dominante text-tinta p-6 border-t-4 border-acento">
+            <h3 class="font-display font-bold text-xl">Integral</h3>
+            <p class="mt-2">Conserva el salvado, con más fibra y un sabor a nuez. Cocción de 35 a 40 minutos.</p>
+            <p class="mt-4 text-sm font-semibold">Bolsas de 500 g y 1 kg</p>
+          </article>
+          <article class="rounded-xl bg-dominante text-tinta p-6 border-t-4 border-acento sm:col-span-2 lg:col-span-1">
+            <h3 class="font-display font-bold text-xl">Parbolizado</h3>
+            <p class="mt-2">Se cocina con vapor antes de moler, así resiste el recalentado y no se apelmaza.</p>
+            <p class="mt-4 text-sm font-semibold">Bolsas de 1 kg y 5 kg, y sacos de 25 kg</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proceso (es una secuencia real, por eso va numerado) -->
+    <section id="proceso" class="max-w-6xl mx-auto px-5 py-16">
+      <h2 class="font-display font-bold text-3xl sm:text-4xl">Del surco a la bolsa</h2>
+      <ol class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        <li class="border-l-4 border-acento pl-4"><span class="font-display font-bold text-2xl">1</span><h3 class="font-semibold mt-1">Siembra</h3><p class="text-sm mt-1">Semilla certificada en lotes con riego controlado.</p></li>
+        <li class="border-l-4 border-acento pl-4"><span class="font-display font-bold text-2xl">2</span><h3 class="font-semibold mt-1">Cosecha</h3><p class="text-sm mt-1">Corte cuando el grano alcanza su punto de madurez.</p></li>
+        <li class="border-l-4 border-acento pl-4"><span class="font-display font-bold text-2xl">3</span><h3 class="font-semibold mt-1">Secado</h3><p class="text-sm mt-1">Bajamos la humedad para que el grano se conserve.</p></li>
+        <li class="border-l-4 border-acento pl-4"><span class="font-display font-bold text-2xl">4</span><h3 class="font-semibold mt-1">Molienda</h3><p class="text-sm mt-1">Descascarado y pulido según el tipo de arroz.</p></li>
+        <li class="border-l-4 border-acento pl-4"><span class="font-display font-bold text-2xl">5</span><h3 class="font-semibold mt-1">Empaque</h3><p class="text-sm mt-1">Bolsas selladas, con lote y fecha en cada una.</p></li>
+      </ol>
+    </section>
+
+    <!-- Contacto con validación -->
+    <section id="contacto" class="bg-secundario text-sobre py-16">
+      <div class="max-w-2xl mx-auto px-5">
+        <h2 class="font-display font-bold text-3xl sm:text-4xl">Pide tu cotización</h2>
+        <p class="mt-3">Cuéntanos qué arroz necesitas y en qué cantidad. Te respondemos por correo.</p>
+
+        <form id="formulario" novalidate class="mt-8 space-y-5 rounded-xl bg-dominante text-tinta p-6">
+          <div>
+            <label for="nombre" class="block font-semibold mb-1">Nombre completo</label>
+            <input id="nombre" name="nombre" type="text" autocomplete="name" aria-describedby="error-nombre"
+              class="w-full rounded-lg border-2 border-secundario/40 bg-dominante px-3 py-2">
+            <p id="error-nombre" class="mt-1 text-sm text-red-700 dark:text-red-400 min-h-5" role="alert"></p>
+          </div>
+          <div>
+            <label for="correo" class="block font-semibold mb-1">Correo electrónico</label>
+            <input id="correo" name="correo" type="email" autocomplete="email" aria-describedby="error-correo"
+              class="w-full rounded-lg border-2 border-secundario/40 bg-dominante px-3 py-2">
+            <p id="error-correo" class="mt-1 text-sm text-red-700 dark:text-red-400 min-h-5" role="alert"></p>
+          </div>
+          <div>
+            <label for="producto" class="block font-semibold mb-1">Producto de interés</label>
+            <select id="producto" name="producto" aria-describedby="error-producto"
+              class="w-full rounded-lg border-2 border-secundario/40 bg-dominante px-3 py-2">
+              <option value="">Elige una opción</option>
+              <option>Blanco extra</option>
+              <option>Integral</option>
+              <option>Parbolizado</option>
+            </select>
+            <p id="error-producto" class="mt-1 text-sm text-red-700 dark:text-red-400 min-h-5" role="alert"></p>
+          </div>
+          <div>
+            <label for="mensaje" class="block font-semibold mb-1">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" rows="4" aria-describedby="error-mensaje"
+              class="w-full rounded-lg border-2 border-secundario/40 bg-dominante px-3 py-2"></textarea>
+            <p id="error-mensaje" class="mt-1 text-sm text-red-700 dark:text-red-400 min-h-5" role="alert"></p>
+          </div>
+          <button type="submit" class="rounded-lg bg-acento text-[#1c281e] font-semibold px-6 py-3 hover:brightness-110">Enviar solicitud</button>
+          <p id="exito" class="hidden rounded-lg bg-secundario text-sobre px-4 py-3 font-medium" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="max-w-6xl mx-auto px-5 py-8 text-sm flex flex-wrap justify-between gap-2">
+    <p>© <span id="anio"></span> Arrocera Campo Claro. Sitio académico con datos de ejemplo.</p>
+    <p>contacto@campoclaro.example</p>
+  </footer>
+
+  <script>
+    // ----- Modo oscuro -----
+    const raiz = document.documentElement;
+    const btnTema = document.getElementById('btnTema');
+    const textoTema = document.getElementById('textoTema');
+
+    function actualizarBoton() {
+      textoTema.textContent = raiz.classList.contains('dark') ? 'Modo claro' : 'Modo oscuro';
+    }
+    btnTema.addEventListener('click', () => {
+      raiz.classList.toggle('dark');
+      try { localStorage.setItem('tema', raiz.classList.contains('dark') ? 'dark' : 'light'); } catch (e) {}
+      actualizarBoton();
+    });
+    actualizarBoton();
+    document.getElementById('anio').textContent = new Date().getFullYear();
+
+    // ----- Validación del formulario -----
+    const form = document.getElementById('formulario');
+    const exito = document.getElementById('exito');
+
+    const reglas = {
+      nombre: v => v.trim().length < 3 ? 'Escribe tu nombre completo (mínimo 3 letras).' : '',
+      correo: v => !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) ? 'Escribe un correo válido, por ejemplo nombre@dominio.com.' : '',
+      producto: v => v === '' ? 'Elige un producto de la lista.' : '',
+      mensaje: v => v.trim().length < 10 ? 'Cuéntanos un poco más (mínimo 10 caracteres).' : ''
+    };
+
+    function validarCampo(id) {
+      const campo = document.getElementById(id);
+      const error = reglas[id](campo.value);
+      document.getElementById('error-' + id).textContent = error;
+      campo.setAttribute('aria-invalid', error ? 'true' : 'false');
+      campo.classList.toggle('border-red-600', !!error);
+      return !error;
+    }
+
+    Object.keys(reglas).forEach(id => {
+      const campo = document.getElementById(id);
+      campo.addEventListener('blur', () => validarCampo(id));
+      campo.addEventListener('input', () => { if (campo.getAttribute('aria-invalid') === 'true') validarCampo(id); });
+    });
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      exito.classList.add('hidden');
+      const resultados = Object.keys(reglas).map(validarCampo);
+      if (resultados.includes(false)) {
+        document.querySelector('[aria-invalid="true"]').focus();
+        return;
+      }
+      const nombre = document.getElementById('nombre').value.trim().split(' ')[0];
+      exito.textContent = 'Gracias, ' + nombre + '. Recibimos tu solicitud y te escribiremos pronto.';
+      exito.classList.remove('hidden');
+      form.reset();
+    });
+  </script>
+</body>
+</html>
